@@ -8,14 +8,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public class Product {
+
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
-    @NotBlank(message="Product name is requiered")
+    @NotBlank(message = "Product name is required")
     private String name;
 
-    @Positive(message="Price must be greater than zero")
+    @Positive(message = "Price must be greater than zero")
     private double price;
 }
