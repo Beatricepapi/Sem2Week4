@@ -9,14 +9,23 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    private final List<Product> productList = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
+    private long nextId = 1;
 
     public Product addProduct(Product product) {
-        productList.add(product);
+        product.setId(nextId++);
+        products.add(product);
         return product;
     }
 
     public List<Product> getAllProducts() {
-        return productList;
+        return products;
+    }
+
+    public Product getProductById(Long id) {
+        return products.stream()
+                .filter(product -> product.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 }
